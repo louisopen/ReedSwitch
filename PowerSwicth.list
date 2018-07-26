@@ -1,0 +1,283 @@
+				;file C:\FOWCOMM\Realtek IOT\SOC applications Ameba\ReedSW2side\main.c
+				;1	#include "HT66F002.h"
+				;2	#define ReedSwitch 	_pa1
+				;3	#define Out_wifi	_pa6	//output
+				;4	#define Sleep_info	_pa5
+				;5	#pragma rambank0
+				;6	unsigned char Rb;
+				;7	unsigned char RbBuf;
+				;8	unsigned char SwCnt;
+				;9	unsigned char OutCnt;
+				;10	bit ScanKey_F;
+				;11	bit first_low_F;
+				;12	bit first_high_F;
+				;13	bit Get_Out_F;
+				;14	
+				;15	#pragma vector timer0_isr @ 0x10
+				;16	void ClearRAM(void);
+				;17	void ScanKey(void);
+				;18	void Get_Out(void);
+				;19	//------------------------------------------
+				;20	//
+				;21	//------------------------------------------
+				;22	void main()
+				@CODE .SECTION 'CODE'
+				include HT66F002.inc
+0000	200A	call    STARTSEC
+0001	2811	jmp     begin
+				@DUMMY .SECTION 'CODE'
+0002	2011	call    begin
+				STARTSEC:
+				STARTUP:
+				STARTSEC:
+000A	0003	ret
+000B	0000	nop
+000C	0000	nop
+000D	0000	nop
+000E	0000	nop
+000F	0000	nop
+				;23	{
+				;24		//_pac1 = 0;		//pa1 output mode.
+				;25		//_papu2 = 1;		//pa2 be use pull up.
+				;26		_pac6 = 0; 		//pa6 output for wifi enable.
+				begin:
+				_main:
+				@MAIN .SECTION 'CODE'
+0011	3715	clr     PAC6
+				;27		Out_wifi = 0;	//to init. Ameba enable pin
+0012	3714	clr     PA6
+				;28		
+				;29		ClearRAM();
+0013	2061	call    _ClearRAM
+				;30		_smod = 0b00000000;
+0014	1F0B	clr     SMOD
+				;31		_stm0c1 = 0b11000001;
+0015	0FC1	mov     a, C1H
+0016	00A9	mov     STM0C1, a
+				;32		_stm0al = 0xee;
+0017	0FEE	mov     a, EEH
+0018	00AC	mov     STM0AL, a
+				;33		_stm0ah = 0x00;
+0019	1F2D	clr     STM0AH
+				;34		_stma0e = 1;
+001A	3091	set     STMA0E
+				;35		_mf0e = 1;
+001B	300F	set     MF0E
+				;36		_emi = 1;
+001C	300E	set     EMI
+				;37		_stm0c0 = 0b00011000;
+001D	0F18	mov     a, 18H
+001E	00A8	mov     STM0C0, a
+001F	2827	jmp     L3
+				;38		while (1)
+				L3:
+				L7:
+0027	2820	jmp     L2
+				;39		{
+				;40			_clrwdt();
+				L2:
+0020	0001	clr     wdt
+				;41			if(ScanKey_F) ScanKey();
+0021	39C4	snz     Get_Out_F[0].3
+0022	2824	jmp     L5
+0023	2029	call    _ScanKey
+				;42			if(Get_Out_F) Get_Out();
+				L5:
+0024	3844	snz     Get_Out_F[0].0
+0025	2827	jmp     L3
+0026	2003	call    _Get_Out
+				;43			
+				;44		}
+				;45	}
+				L1:
+0028	2828	jmp     $
+				;46	//------------------------------------------
+				;47	//
+				;48	//------------------------------------------
+				;49	void Get_Out(void)
+				;50	{
+				;51		if(OutCnt >= 10)
+				_Get_Out:
+				@Get_Out .SECTION 'CODE'
+0003	0740	mov     a, OutCnt[0]
+0004	0A0A	sub     a, AH
+0005	380A	snz     C
+0006	2809	jmp     L9
+				;52		{
+				;53			Get_Out_F = 0;
+0007	3444	clr     Get_Out_F[0].0
+				;54			Out_wifi = 0;		//finished output.
+0008	3714	clr     PA6
+				L9:
+				L10:
+0009	0003	ret
+				;55		}
+				;56	}
+				;57	//------------------------------------------
+				;58	//
+				;59	//------------------------------------------
+				;60	void ScanKey(void)
+				;61	{
+				;62		ScanKey_F = 0;
+				_ScanKey:
+				@ScanKey .SECTION 'CODE'
+0029	35C4	clr     Get_Out_F[0].3
+				;63		if(ReedSwitch)			//Reed switch High / Low detect. Please used external big regsiser.
+002A	3894	snz     PA1
+002B	282E	jmp     L13
+				;64			Rb = 0;
+002C	1F43	clr     Rb[0]
+002D	2830	jmp     L14
+				;65		else
+				;66			Rb = 1;
+				L13:
+002E	0F01	mov     a, 1H
+002F	00C3	mov     Rb[0], a
+				;67	
+				;68		if(Rb == RbBuf)
+				L14:
+0030	0743	mov     a, Rb[0]
+0031	0442	xor     a, RbBuf[0]
+0032	390A	snz     Z
+0033	2853	jmp     L15
+				;69		{
+				;70			SwCnt++;
+0034	14C1	inc     SwCnt[0]
+				;71			if(SwCnt >= 4)
+0035	0741	mov     a, SwCnt[0]
+0036	0A04	sub     a, 4H
+0037	380A	snz     C
+0038	2856	jmp     L12
+				;72			{
+				;73				SwCnt = 4;
+0039	0F04	mov     a, 4H
+003A	00C1	mov     SwCnt[0], a
+				;74				if(RbBuf == 1)
+003B	0742	mov     a, RbBuf[0]
+003C	0C01	xor     a, 1H
+003D	390A	snz     Z
+003E	2849	jmp     L19
+				;75				{
+				;76					first_low_F = 1;				
+003F	3144	set     Get_Out_F[0].2
+				;77					if(first_high_F)
+0040	38C4	snz     Get_Out_F[0].1
+0041	2856	jmp     L12
+				;78					{
+				;79						first_high_F = 0;
+0042	34C4	clr     Get_Out_F[0].1
+				;80						if(!Sleep_info)		//Low for Ameba sleep mode.
+0043	3E94	sz      PA5
+0044	2856	jmp     L12
+				;81						{	
+				;82							Out_wifi = 1;	//output port active.
+0045	3314	set     PA6
+				;83							Get_Out_F = 1;	//output flag
+0046	3044	set     Get_Out_F[0].0
+				;84							OutCnt = 0;		//output counting at time out of finished
+0047	1F40	clr     OutCnt[0]
+				;85						}
+				;86					}
+				;87				}else
+0048	2856	jmp     L12
+				;88				{
+				;89					first_high_F = 1;								
+				L19:
+0049	30C4	set     Get_Out_F[0].1
+				;90					if(first_low_F)
+004A	3944	snz     Get_Out_F[0].2
+004B	2856	jmp     L12
+				;91					{
+				;92						first_low_F = 0;
+004C	3544	clr     Get_Out_F[0].2
+				;93						if(!Sleep_info)		//Low for Ameba sleep mode.
+004D	3E94	sz      PA5
+004E	2856	jmp     L12
+				;94						{
+				;95							Out_wifi = 1;	//output port active.
+004F	3314	set     PA6
+				;96							Get_Out_F = 1;	//output flag
+0050	3044	set     Get_Out_F[0].0
+				;97							OutCnt = 0;		//output counting at time out of finished
+0051	1F40	clr     OutCnt[0]
+				;98						}
+				;99					}				
+				;100				}
+				;101			}
+				;102		}else
+0052	2856	jmp     L12
+				;103		{
+				;104			SwCnt = 0;
+				L15:
+0053	1F41	clr     SwCnt[0]
+				;105			RbBuf = Rb;
+0054	0743	mov     a, Rb[0]
+0055	00C2	mov     RbBuf[0], a
+				L12:
+				L16:
+0056	0003	ret
+				;106		}
+				;107	}
+				;108	//------------------------------------------
+				;109	//	around 7~10ms
+				;110	//------------------------------------------
+				;111	void timer0_isr(void)
+				;112	{
+				@@timer0_isr .SECTION 'CODE'
+0010	2857	jmp     _timer0_isr
+				_timer0_isr:
+				@timer0_isr .SECTION 'CODE'
+0057	00C5	mov     V4A, a
+0058	070A	mov     a, STATUS
+0059	00C6	mov     V4S, a
+				;113		_stma0f = 0;
+005A	3691	clr     STMA0F
+				;114		ScanKey_F = 1;
+005B	31C4	set     Get_Out_F[0].3
+				;115		OutCnt++;
+005C	14C0	inc     OutCnt[0]
+				L29:
+005D	0746	mov     a, V4S
+005E	008A	mov     STATUS, a
+005F	0745	mov     a, V4A
+0060	0004	reti
+				;116	}
+				;117	//------------------------------------------
+				;118	//
+				;119	//------------------------------------------
+				;120	void ClearRAM(void)
+				;121	{
+				;122		for (_mp0 = 0x40; _mp0 < 0xff; _mp0++)
+				_ClearRAM:
+				@ClearRAM .SECTION 'CODE'
+0061	0F40	mov     a, 40H
+0062	0081	mov     MP0, a
+0063	2866	jmp     L34
+				L32:
+0065	1481	inc     MP0
+				L34:
+0066	0701	mov     a, MP0
+0067	0AFF	sub     a, FFH
+0068	380A	snz     C
+0069	2864	jmp     L31
+				;123		{
+				;124			_iar0 = 0;
+				L31:
+0064	1F00	clr     [00H]
+				;125		}
+				;126		_iar0 = 0;
+006A	1F00	clr     [00H]
+				L30:
+006B	0003	ret
+				;127	}
+				data .SECTION 'DATA'
+				OutCnt DB DUP (?) ; OutCnt
+				SwCnt DB DUP (?) ; SwCnt
+				RbBuf DB DUP (?) ; RbBuf
+				Rb DB DUP (?) ; Rb
+				V4A DB DUP (?)
+				V4S DB DUP (?)
+				Get_Out_F DB DUP (?) ; Get_Out_F
+				first_high_F DB DUP (?) ; first_high_F
+				first_low_F DB DUP (?) ; first_low_F
+				ScanKey_F DB DUP (?) ; ScanKey_F
