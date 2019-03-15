@@ -1,6 +1,5 @@
-				;file C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\main.c
-				;1	#include "HT66F002.h"
-				;2	#define ReedSwitch 	_pa1
+				;file C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\main.c
+				;1	#include "HT66F002.h"		//				;2	#define ReedSwitch 	_pa1
 				;3	#define Out_wifi	_pa6	//output
 				;4	#define Sleep_info	_pa5
 				;5	#pragma rambank0

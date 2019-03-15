@@ -1,6 +1,6 @@
 
-Linker Version 8.7.5.171218
-Input Object File: C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ
+Linker Version 8.7.6.180315
+Input Object File: C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ
 
 Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\MATH6.LIB
 Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\time_mrsc.lib
@@ -11,34 +11,34 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x
 
 
      Bank    Start     End      Length     Class    AvgIns    Name
-     00h     0000h     0002h    0003h      CODE               @CODE (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0003h     0009h    0007h      CODE               @Get_Out (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     000ah     000ah    0001h      CODE               STARTSEC (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0010h     0010h    0001h      CODE               @@timer0_isr (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0011h     0028h    0018h      CODE               @MAIN (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0029h     0056h    002eh      CODE               @ScanKey (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0057h     0060h    000ah      CODE               @timer0_isr (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0061h     006bh    000bh      CODE               @ClearRAM (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0040h     0040h    0001h      DATA     4         @OutCnt (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0041h     0041h    0001h      DATA     4         @SwCnt (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0042h     0042h    0001h      DATA     3         @RbBuf (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0043h     0043h    0001h      DATA     4         @Rb (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0044h     0044h    0001h      DATA     13        BITDATASEC (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
+     00h     0000h     0002h    0003h      CODE               @CODE (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0003h     0009h    0007h      CODE               @Get_Out (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     000ah     000ah    0001h      CODE               STARTSEC (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0010h     0010h    0001h      CODE               @@timer0_isr (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0011h     0028h    0018h      CODE               @MAIN (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0029h     0056h    002eh      CODE               @ScanKey (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0057h     0060h    000ah      CODE               @timer0_isr (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0061h     006bh    000bh      CODE               @ClearRAM (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0040h     0040h    0001h      DATA     4         @OutCnt (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0041h     0041h    0001h      DATA     4         @SwCnt (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0042h     0042h    0001h      DATA     3         @RbBuf (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0043h     0043h    0001h      DATA     4         @Rb (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0044h     0044h    0001h      DATA     13        BITDATASEC (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
      00h     0045h     0046h    0002h      DATA     2         CTMPDATA (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\MATH6.LIB)
 
      Local Sections
 
      Bank    Start     End      Length     Class    AvgIns    Name
-     00h     0047h     0047h    0000h      LOCAL    0         @DUMMY (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0047h     0047h    0000h      LOCAL    0         _main (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0047h     0047h    0000h      LOCAL    0         _ClearRAM (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0047h     0047h    0000h      LOCAL    0         _ScanKey (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
-     00h     0047h     0047h    0000h      LOCAL    0         _Get_Out (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
+     00h     0047h     0047h    0000h      LOCAL    0         @DUMMY (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0047h     0047h    0000h      LOCAL    0         _main (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0047h     0047h    0000h      LOCAL    0         _ClearRAM (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0047h     0047h    0000h      LOCAL    0         _ScanKey (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
+     00h     0047h     0047h    0000h      LOCAL    0         _Get_Out (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
 
      Indepentent Local Sections
 
      Bank    Start     End      Length     Class    AvgIns    Name
-     00h     0047h     0047h    0000h      ILOCAL   0         _timer0_isr (C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ)
+     00h     0047h     0047h    0000h      ILOCAL   0         _timer0_isr (C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ)
 
      Public Symbols Information
      Address            Public by Name
@@ -91,6 +91,6 @@ Call Tree
             _ScanKey (1)
             _Get_Out (1)
 
-HLINK: Program entry point at section '@CODE' (address 0) of file 'C:\FOWCOMM\Realtek IOT\Ameba SOC applications\ReedSW2side\MAIN.OBJ'
+HLINK: Program entry point at section '@CODE' (address 0) of file 'C:\IOT-BU\Realtek IOT\Ameba SOC applications\ReedSwitch\MAIN.OBJ'
 
 Total 0 error(s), Total 0 Warning(s)

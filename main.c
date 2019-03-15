@@ -1,4 +1,4 @@
-#include "HT66F002.h"
+#include "HT66F002.h"		//³ÌªìDemo version
 #define ReedSwitch 	_pa1
 #define Out_wifi	_pa6	//output
 #define Sleep_info	_pa5
