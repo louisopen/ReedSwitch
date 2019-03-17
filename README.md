@@ -1,0 +1,2 @@
+# Demo program for Assembly
+Double side detector of the reed-switch on very low power comsumption, demo with C-like language of HOLTEK MCU and the system used internal RC and free running on HT66F002 8ssop.
