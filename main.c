@@ -1,3 +1,7 @@
+//---------------------------------------------------
+// ³ÌªìDemo version for 2-side switch of ReedSwitch
+// Free-run the MCU, but still very low power.
+//---------------------------------------------------
 #include "HT66F002.h"		//³ÌªìDemo version
 #define ReedSwitch 	_pa1
 #define Out_wifi	_pa6	//output

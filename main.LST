@@ -2,364 +2,364 @@
 
 
 
-;  23: {
-  23  0000              __stm0ah EQU [02dH]
-  23  0000              __stm0al EQU [02cH]
-  23  0000              __stm0dh EQU [02bH]
-  23  0000              __stm0dl EQU [02aH]
-  23  0000              __stm0c1 EQU [029H]
-  23  0000              __stm0c0 EQU [028H]
-  23  0000              __pasr EQU [026H]
-  23  0000              __rstc EQU [025H]
-  23  0000              __sadc2 EQU [024H]
-  23  0000              __sadc1 EQU [023H]
-  23  0000              __sadc0 EQU [022H]
-  23  0000              __sadoh EQU [021H]
-  23  0000              __sadol EQU [020H]
-  23  0000              __eed EQU [01fH]
-  23  0000              __eea EQU [01eH]
-  23  0000              __smod1 EQU [01cH]
-  23  0000              __tbc EQU [01bH]
-  23  0000              __wdtc EQU [019H]
-  23  0000              __ifs0 EQU [018H]
-  23  0000              __pawu EQU [017H]
-  23  0000              __papu EQU [016H]
-  23  0000              __pac EQU [015H]
-  23  0000              __pa EQU [014H]
-  23  0000              __mfi0 EQU [011H]
-  23  0000              __intc1 EQU [0fH]
-  23  0000              __intc0 EQU [0eH]
-  23  0000              __integ EQU [0dH]
-  23  0000              __smod EQU [0bH]
-  23  0000              __status EQU [0aH]
-  23  0000              __tblh EQU [08H]
-  23  0000              __tblp EQU [07H]
-  23  0000              __pcl EQU [06H]
-  23  0000              __acc EQU [05H]
-  23  0000              __bp EQU [04H]
-  23  0000              __mp1 EQU [03H]
-  23  0000              __iar1 EQU [02H]
-  23  0000              __mp0 EQU [01H]
-  23  0000              __iar0 EQU [00H]
-  23  0000              @MAIN .SECTION 'CODE'
-  23  0000              _main PROC
-  23  0000              begin:
+;  27: {
+  27  0000              __stm0ah EQU [02dH]
+  27  0000              __stm0al EQU [02cH]
+  27  0000              __stm0dh EQU [02bH]
+  27  0000              __stm0dl EQU [02aH]
+  27  0000              __stm0c1 EQU [029H]
+  27  0000              __stm0c0 EQU [028H]
+  27  0000              __pasr EQU [026H]
+  27  0000              __rstc EQU [025H]
+  27  0000              __sadc2 EQU [024H]
+  27  0000              __sadc1 EQU [023H]
+  27  0000              __sadc0 EQU [022H]
+  27  0000              __sadoh EQU [021H]
+  27  0000              __sadol EQU [020H]
+  27  0000              __eed EQU [01fH]
+  27  0000              __eea EQU [01eH]
+  27  0000              __smod1 EQU [01cH]
+  27  0000              __tbc EQU [01bH]
+  27  0000              __wdtc EQU [019H]
+  27  0000              __ifs0 EQU [018H]
+  27  0000              __pawu EQU [017H]
+  27  0000              __papu EQU [016H]
+  27  0000              __pac EQU [015H]
+  27  0000              __pa EQU [014H]
+  27  0000              __mfi0 EQU [011H]
+  27  0000              __intc1 EQU [0fH]
+  27  0000              __intc0 EQU [0eH]
+  27  0000              __integ EQU [0dH]
+  27  0000              __smod EQU [0bH]
+  27  0000              __status EQU [0aH]
+  27  0000              __tblh EQU [08H]
+  27  0000              __tblp EQU [07H]
+  27  0000              __pcl EQU [06H]
+  27  0000              __acc EQU [05H]
+  27  0000              __bp EQU [04H]
+  27  0000              __mp1 EQU [03H]
+  27  0000              __iar1 EQU [02H]
+  27  0000              __mp0 EQU [01H]
+  27  0000              __iar0 EQU [00H]
+  27  0000              @MAIN .SECTION 'CODE'
+  27  0000              _main PROC
+  27  0000              begin:
 
-;  26: 	_pac6 = 0; 		//pa6 output for wifi enable.
-  26  0000  3715        CLR [015H].6
+;  30: 	_pac6 = 0; 		//pa6 output for wifi enable.
+  30  0000  3715        CLR [015H].6
 
-;  27: 	Out_wifi = 0;	//to init. Ameba enable pin
-  27  0001  3714        CLR [014H].6
+;  31: 	Out_wifi = 0;	//to init. Ameba enable pin
+  31  0001  3714        CLR [014H].6
 
-;  29: 	ClearRAM();
-  29  0002  2000     R  CALL _ClearRAM
+;  33: 	ClearRAM();
+  33  0002  2000     R  CALL _ClearRAM
 
-;  30: 	_smod = 0b00000000;
-  30  0003  1F0B        CLR __smod
+;  34: 	_smod = 0b00000000;
+  34  0003  1F0B        CLR __smod
 
-;  31: 	_stm0c1 = 0b11000001;
-  31  0004  0FC1        MOV A,0c1h
+;  35: 	_stm0c1 = 0b11000001;
+  35  0004  0FC1        MOV A,0c1h
 "File: main.c        Holtek Cross-Assembler  Version 3.00      Page 2 
 
-  31  0005  00A9        MOV __stm0c1,A
+  35  0005  00A9        MOV __stm0c1,A
 
-;  32: 	_stm0al = 0xee;
-  32  0006  0FEE        MOV A,0eeh
-  32  0007  00AC        MOV __stm0al,A
+;  36: 	_stm0al = 0xee;
+  36  0006  0FEE        MOV A,0eeh
+  36  0007  00AC        MOV __stm0al,A
 
-;  33: 	_stm0ah = 0x00;
-  33  0008  1F2D        CLR __stm0ah
+;  37: 	_stm0ah = 0x00;
+  37  0008  1F2D        CLR __stm0ah
 
-;  34: 	_stma0e = 1;
-  34  0009  3091        SET [011H].1
+;  38: 	_stma0e = 1;
+  38  0009  3091        SET [011H].1
 
-;  35: 	_mf0e = 1;
-  35  000A  300F        SET [0FH].0
+;  39: 	_mf0e = 1;
+  39  000A  300F        SET [0FH].0
 
-;  36: 	_emi = 1;
-  36  000B  300E        SET [0EH].0
+;  40: 	_emi = 1;
+  40  000B  300E        SET [0EH].0
 
-;  37: 	_stm0c0 = 0b00011000;
-  37  000C  0F18        MOV A,018h
-  37  000D  00A8        MOV __stm0c0,A
-  37  000E  2800     R  JMP L3
-  37  000F              L2:
+;  41: 	_stm0c0 = 0b00011000;
+  41  000C  0F18        MOV A,018h
+  41  000D  00A8        MOV __stm0c0,A
+  41  000E  2800     R  JMP L3
+  41  000F              L2:
 
-;  40: 		_clrwdt();
-  40  000F  0001        CLR WDT
+;  44: 		_clrwdt();
+  44  000F  0001        CLR WDT
 
-;  41: 		if(ScanKey_F) ScanKey();
-  41  0010  3800     R  SNZ _ScanKey_F
-  41  0011  2800     R  JMP L5
-  41  0012  2000     R  CALL _ScanKey
-  41  0013              L5:
+;  45: 		if(ScanKey_F) ScanKey();
+  45  0010  3800     R  SNZ _ScanKey_F
+  45  0011  2800     R  JMP L5
+  45  0012  2000     R  CALL _ScanKey
+  45  0013              L5:
 
-;  42: 		if(Get_Out_F) Get_Out();
-  42  0013  3800     R  SNZ _Get_Out_F
-  42  0014  2800     R  JMP L7
-  42  0015  2000     R  CALL _Get_Out
-  42  0016              L7:
-  42  0016              L3:
+;  46: 		if(Get_Out_F) Get_Out();
+  46  0013  3800     R  SNZ _Get_Out_F
+  46  0014  2800     R  JMP L7
+  46  0015  2000     R  CALL _Get_Out
+  46  0016              L7:
+  46  0016              L3:
 
-;  38: 	while (1)
-  38  0016  2800     R  JMP L2
-  38  0017              L1:
+;  42: 	while (1)
+  42  0016  2800     R  JMP L2
+  42  0017              L1:
 
-;  45: }
-  45  0017  2800     R  JMP $
-  45  0018              _main ENDP
+;  49: }
+  49  0017  2800     R  JMP $
+  49  0018              _main ENDP
 
-;  50: {
-  50  0000              @Get_Out .SECTION 'CODE'
-  50  0000              PUBLIC _Get_Out
-  50  0000              _Get_Out PROC
+;  54: {
+  54  0000              @Get_Out .SECTION 'CODE'
+  54  0000              PUBLIC _Get_Out
+  54  0000              _Get_Out PROC
 
-;  51: 	if(OutCnt >= 10)
-  51  0000  0700     R  MOV A,_OutCnt
-  51  0001  0A0A        SUB A,0ah
-  51  0002  380A        SNZ [0ah].0
-  51  0003  2800     R  JMP L10
+;  55: 	if(OutCnt >= 10)
+  55  0000  0700     R  MOV A,_OutCnt
+  55  0001  0A0A        SUB A,0ah
+  55  0002  380A        SNZ [0ah].0
+  55  0003  2800     R  JMP L10
 
-;  53: 		Get_Out_F = 0;
+;  57: 		Get_Out_F = 0;
 "File: main.c        Holtek Cross-Assembler  Version 3.00      Page 3 
 
-  53  0004  3400     R  CLR _Get_Out_F
+  57  0004  3400     R  CLR _Get_Out_F
 
-;  54: 		Out_wifi = 0;		//finished output.
-  54  0005  3714        CLR [014H].6
-  54  0006              L10:
-  54  0006              L9:
-  54  0006  0003        RET
-  54  0007              _Get_Out ENDP
+;  58: 		Out_wifi = 0;		//finished output.
+  58  0005  3714        CLR [014H].6
+  58  0006              L10:
+  58  0006              L9:
+  58  0006  0003        RET
+  58  0007              _Get_Out ENDP
 
-;  61: {
-  61  0000              @ScanKey .SECTION 'CODE'
-  61  0000              PUBLIC _ScanKey
-  61  0000              _ScanKey PROC
+;  65: {
+  65  0000              @ScanKey .SECTION 'CODE'
+  65  0000              PUBLIC _ScanKey
+  65  0000              _ScanKey PROC
 
-;  62: 	ScanKey_F = 0;
-  62  0000  3400     R  CLR _ScanKey_F
+;  66: 	ScanKey_F = 0;
+  66  0000  3400     R  CLR _ScanKey_F
 
-;  63: 	if(ReedSwitch)			//Reed switch High / Low detect. Please used external big regsiser.
-  63  0001  3894        SNZ [014H].1
-  63  0002  2800     R  JMP L13
+;  67: 	if(ReedSwitch)			//Reed switch High / Low detect. Please used external big regsiser.
+  67  0001  3894        SNZ [014H].1
+  67  0002  2800     R  JMP L13
 
-;  64: 		Rb = 0;
-  64  0003  1F00     R  CLR _Rb
-  64  0004  2800     R  JMP L14
-  64  0005              L13:
+;  68: 		Rb = 0;
+  68  0003  1F00     R  CLR _Rb
+  68  0004  2800     R  JMP L14
+  68  0005              L13:
 
-;  66: 		Rb = 1;
-  66  0005  0F01        MOV A,1
-  66  0006  0080     R  MOV _Rb,A
-  66  0007              L14:
+;  70: 		Rb = 1;
+  70  0005  0F01        MOV A,1
+  70  0006  0080     R  MOV _Rb,A
+  70  0007              L14:
 
-;  68: 	if(Rb == RbBuf)
-  68  0007  0700     R  MOV A,_Rb
-  68  0008  0400     R  XOR A,_RbBuf
-  68  0009  390A        SNZ [0ah].2
-  68  000A  2800     R  JMP L15
+;  72: 	if(Rb == RbBuf)
+  72  0007  0700     R  MOV A,_Rb
+  72  0008  0400     R  XOR A,_RbBuf
+  72  0009  390A        SNZ [0ah].2
+  72  000A  2800     R  JMP L15
 
-;  70: 		SwCnt++;
-  70  000B  1480     R  INC _SwCnt
+;  74: 		SwCnt++;
+  74  000B  1480     R  INC _SwCnt
 
-;  71: 		if(SwCnt >= 4)
-  71  000C  0700     R  MOV A,_SwCnt
-  71  000D  0A04        SUB A,04h
-  71  000E  380A        SNZ [0ah].0
-  71  000F  2800     R  JMP L16
+;  75: 		if(SwCnt >= 4)
+  75  000C  0700     R  MOV A,_SwCnt
+  75  000D  0A04        SUB A,04h
+  75  000E  380A        SNZ [0ah].0
+  75  000F  2800     R  JMP L16
 
-;  73: 			SwCnt = 4;
-  73  0010  0F04        MOV A,04h
-  73  0011  0080     R  MOV _SwCnt,A
+;  77: 			SwCnt = 4;
+  77  0010  0F04        MOV A,04h
+  77  0011  0080     R  MOV _SwCnt,A
 
-;  74: 			if(RbBuf == 1)
-  74  0012  0700     R  MOV A,_RbBuf
-  74  0013  0C01        XOR A,01h
-  74  0014  390A        SNZ [0ah].2
-  74  0015  2800     R  JMP L19
+;  78: 			if(RbBuf == 1)
+  78  0012  0700     R  MOV A,_RbBuf
+  78  0013  0C01        XOR A,01h
+  78  0014  390A        SNZ [0ah].2
+  78  0015  2800     R  JMP L19
 
-;  76: 				first_low_F = 1;				
-  76  0016  3000     R  SET _first_low_F
+;  80: 				first_low_F = 1;				
+  80  0016  3000     R  SET _first_low_F
 
-;  77: 				if(first_high_F)
+;  81: 				if(first_high_F)
 "File: main.c        Holtek Cross-Assembler  Version 3.00      Page 4 
 
-  77  0017  3800     R  SNZ _first_high_F
-  77  0018  2800     R  JMP L16
+  81  0017  3800     R  SNZ _first_high_F
+  81  0018  2800     R  JMP L16
 
-;  79: 					first_high_F = 0;
-  79  0019  3400     R  CLR _first_high_F
+;  83: 					first_high_F = 0;
+  83  0019  3400     R  CLR _first_high_F
 
-;  80: 					if(!Sleep_info)		//Low for Ameba sleep mode.
-  80  001A  3E94        SZ [014H].5
-  80  001B  2800     R  JMP L16
+;  84: 					if(!Sleep_info)		//Low for Ameba sleep mode.
+  84  001A  3E94        SZ [014H].5
+  84  001B  2800     R  JMP L16
 
-;  82: 						Out_wifi = 1;	//output port active.
-  82  001C  3314        SET [014H].6
+;  86: 						Out_wifi = 1;	//output port active.
+  86  001C  3314        SET [014H].6
 
-;  83: 						Get_Out_F = 1;	//output flag
-  83  001D  3000     R  SET _Get_Out_F
+;  87: 						Get_Out_F = 1;	//output flag
+  87  001D  3000     R  SET _Get_Out_F
 
-;  84: 						OutCnt = 0;		//output counting at time out of finished
-  84  001E  1F00     R  CLR _OutCnt
+;  88: 						OutCnt = 0;		//output counting at time out of finished
+  88  001E  1F00     R  CLR _OutCnt
 
-;  87: 			}else
-  87  001F  2800     R  JMP L16
-  87  0020              L19:
+;  91: 			}else
+  91  001F  2800     R  JMP L16
+  91  0020              L19:
 
-;  89: 				first_high_F = 1;								
-  89  0020  3000     R  SET _first_high_F
+;  93: 				first_high_F = 1;								
+  93  0020  3000     R  SET _first_high_F
 
-;  90: 				if(first_low_F)
-  90  0021  3800     R  SNZ _first_low_F
-  90  0022  2800     R  JMP L16
+;  94: 				if(first_low_F)
+  94  0021  3800     R  SNZ _first_low_F
+  94  0022  2800     R  JMP L16
 
-;  92: 					first_low_F = 0;
-  92  0023  3400     R  CLR _first_low_F
+;  96: 					first_low_F = 0;
+  96  0023  3400     R  CLR _first_low_F
 
-;  93: 					if(!Sleep_info)		//Low for Ameba sleep mode.
-  93  0024  3E94        SZ [014H].5
-  93  0025  2800     R  JMP L16
+;  97: 					if(!Sleep_info)		//Low for Ameba sleep mode.
+  97  0024  3E94        SZ [014H].5
+  97  0025  2800     R  JMP L16
 
-;  95: 						Out_wifi = 1;	//output port active.
-  95  0026  3314        SET [014H].6
+;  99: 						Out_wifi = 1;	//output port active.
+  99  0026  3314        SET [014H].6
 
-;  96: 						Get_Out_F = 1;	//output flag
-  96  0027  3000     R  SET _Get_Out_F
+; 100: 						Get_Out_F = 1;	//output flag
+ 100  0027  3000     R  SET _Get_Out_F
 
-;  97: 						OutCnt = 0;		//output counting at time out of finished
-  97  0028  1F00     R  CLR _OutCnt
+; 101: 						OutCnt = 0;		//output counting at time out of finished
+ 101  0028  1F00     R  CLR _OutCnt
 
-; 102: 	}else
- 102  0029  2800     R  JMP L16
- 102  002A              L15:
+; 106: 	}else
+ 106  0029  2800     R  JMP L16
+ 106  002A              L15:
 
-; 104: 		SwCnt = 0;
- 104  002A  1F00     R  CLR _SwCnt
+; 108: 		SwCnt = 0;
+ 108  002A  1F00     R  CLR _SwCnt
 
-; 105: 		RbBuf = Rb;
- 105  002B  0700     R  MOV A,_Rb
- 105  002C  0080     R  MOV _RbBuf,A
- 105  002D              L16:
- 105  002D              L12:
- 105  002D  0003        RET
- 105  002E              _ScanKey ENDP
+; 109: 		RbBuf = Rb;
+ 109  002B  0700     R  MOV A,_Rb
+ 109  002C  0080     R  MOV _RbBuf,A
+ 109  002D              L16:
+ 109  002D              L12:
+ 109  002D  0003        RET
+ 109  002E              _ScanKey ENDP
 "File: main.c        Holtek Cross-Assembler  Version 3.00      Page 5 
 
 
-; 112: {
- 112  0000              @@timer0_isr .SECTION AT 010H 'CODE'
- 112  0000  2800     R  JMP _timer0_isr
- 112  0000              @timer0_isr .SECTION 'CODE'
- 112  0000              _timer0_isr PROC
- 112  0000  0080     E  MOV V4A,A
- 112  0001  070A        MOV A,[0AH]
- 112  0002  0080     E  MOV V4S,A
+; 116: {
+ 116  0000              @@timer0_isr .SECTION AT 010H 'CODE'
+ 116  0000  2800     R  JMP _timer0_isr
+ 116  0000              @timer0_isr .SECTION 'CODE'
+ 116  0000              _timer0_isr PROC
+ 116  0000  0080     E  MOV V4A,A
+ 116  0001  070A        MOV A,[0AH]
+ 116  0002  0080     E  MOV V4S,A
 
-; 113: 	_stma0f = 0;
- 113  0003  3691        CLR [011H].5
+; 117: 	_stma0f = 0;
+ 117  0003  3691        CLR [011H].5
 
-; 114: 	ScanKey_F = 1;
- 114  0004  3000     R  SET _ScanKey_F
+; 118: 	ScanKey_F = 1;
+ 118  0004  3000     R  SET _ScanKey_F
 
-; 115: 	OutCnt++;
- 115  0005  1480     R  INC _OutCnt
- 115  0006              L29:
- 115  0006  0700     E  MOV A,V4S
- 115  0007  008A        MOV [0AH],A
- 115  0008  0700     E  MOV A,V4A
- 115  0009  0004        RETI
- 115  000A              _timer0_isr ENDP
- 115  000A              RAMBANK 0 @timer0_isr
- 115  0000              @timer0_isr .SECTION 'DATA'
+; 119: 	OutCnt++;
+ 119  0005  1480     R  INC _OutCnt
+ 119  0006              L29:
+ 119  0006  0700     E  MOV A,V4S
+ 119  0007  008A        MOV [0AH],A
+ 119  0008  0700     E  MOV A,V4A
+ 119  0009  0004        RETI
+ 119  000A              _timer0_isr ENDP
+ 119  000A              RAMBANK 0 @timer0_isr
+ 119  0000              @timer0_isr .SECTION 'DATA'
 
-; 121: {
- 121  0000              @ClearRAM .SECTION 'CODE'
- 121  0000              PUBLIC _ClearRAM
- 121  0000              _ClearRAM PROC
+; 125: {
+ 125  0000              @ClearRAM .SECTION 'CODE'
+ 125  0000              PUBLIC _ClearRAM
+ 125  0000              _ClearRAM PROC
 
-; 122: 	for (_mp0 = 0x40; _mp0 < 0xff; _mp0++)
- 122  0000  0F40        MOV A,040h
- 122  0001  0081        MOV __mp0,A
- 122  0002  2800     R  JMP L34
- 122  0003              L31:
+; 126: 	for (_mp0 = 0x40; _mp0 < 0xff; _mp0++)
+ 126  0000  0F40        MOV A,040h
+ 126  0001  0081        MOV __mp0,A
+ 126  0002  2800     R  JMP L34
+ 126  0003              L31:
 
-; 124: 		_iar0 = 0;
- 124  0003  1F00        CLR __iar0
- 124  0004              L32:
+; 128: 		_iar0 = 0;
+ 128  0003  1F00        CLR __iar0
+ 128  0004              L32:
 
-; 122: 	for (_mp0 = 0x40; _mp0 < 0xff; _mp0++)
- 122  0004  1481        INC __mp0
- 122  0005              L34:
- 122  0005  0701        MOV A,__mp0
- 122  0006  0AFF        SUB A,0ffh
- 122  0007  380A        SNZ [0AH].0
- 122  0008  2800     R  JMP L31
+; 126: 	for (_mp0 = 0x40; _mp0 < 0xff; _mp0++)
+ 126  0004  1481        INC __mp0
+ 126  0005              L34:
+ 126  0005  0701        MOV A,__mp0
+ 126  0006  0AFF        SUB A,0ffh
+ 126  0007  380A        SNZ [0AH].0
+ 126  0008  2800     R  JMP L31
 
-; 126: 	_iar0 = 0;
- 126  0009  1F00        CLR __iar0
- 126  000A              L30:
- 126  000A  0003        RET
- 126  000B              _ClearRAM ENDP
+; 130: 	_iar0 = 0;
+ 130  0009  1F00        CLR __iar0
+ 130  000A              L30:
+ 130  000A  0003        RET
+ 130  000B              _ClearRAM ENDP
 
-;   9: unsigned char OutCnt;
-   9  000B              PUBLIC _OutCnt
-   9  000B              RAMBANK 0 @OutCnt
-   9  0000              @OutCnt .SECTION 'DATA'
+;  13: unsigned char OutCnt;
+  13  000B              PUBLIC _OutCnt
+  13  000B              RAMBANK 0 @OutCnt
+  13  0000              @OutCnt .SECTION 'DATA'
 "File: main.c        Holtek Cross-Assembler  Version 3.00      Page 6 
 
-   9  0000  00          _OutCnt DB ? ; OutCnt
+  13  0000  00          _OutCnt DB ? ; OutCnt
 
-;   8: unsigned char SwCnt;
-   8  0001              PUBLIC _SwCnt
-   8  0001              RAMBANK 0 @SwCnt
-   8  0000              @SwCnt .SECTION 'DATA'
-   8  0000  00          _SwCnt DB ? ; SwCnt
+;  12: unsigned char SwCnt;
+  12  0001              PUBLIC _SwCnt
+  12  0001              RAMBANK 0 @SwCnt
+  12  0000              @SwCnt .SECTION 'DATA'
+  12  0000  00          _SwCnt DB ? ; SwCnt
 
-;   7: unsigned char RbBuf;
-   7  0001              PUBLIC _RbBuf
-   7  0001              RAMBANK 0 @RbBuf
-   7  0000              @RbBuf .SECTION 'DATA'
-   7  0000  00          _RbBuf DB ? ; RbBuf
+;  11: unsigned char RbBuf;
+  11  0001              PUBLIC _RbBuf
+  11  0001              RAMBANK 0 @RbBuf
+  11  0000              @RbBuf .SECTION 'DATA'
+  11  0000  00          _RbBuf DB ? ; RbBuf
 
-;   6: unsigned char Rb;
-   6  0001              PUBLIC _Rb
-   6  0001              RAMBANK 0 @Rb
-   6  0000              @Rb .SECTION 'DATA'
-   6  0000  00          _Rb DB ? ; Rb
+;  10: unsigned char Rb;
+  10  0001              PUBLIC _Rb
+  10  0001              RAMBANK 0 @Rb
+  10  0000              @Rb .SECTION 'DATA'
+  10  0000  00          _Rb DB ? ; Rb
 
-;  13: bit Get_Out_F;
-  13  0001              RAMBANK 0 BITDATASEC
-  13  0000              BITDATASEC .SECTION 'DATA'
-  13  0000              PUBLIC _Get_Out_F
-  13  0000  00          _Get_Out_F DBIT ; Get_Out_F
+;  17: bit Get_Out_F;
+  17  0001              RAMBANK 0 BITDATASEC
+  17  0000              BITDATASEC .SECTION 'DATA'
+  17  0000              PUBLIC _Get_Out_F
+  17  0000  00          _Get_Out_F DBIT ; Get_Out_F
 
-;  12: bit first_high_F;
-  12  0001              PUBLIC _first_high_F
-  12  0000              _first_high_F DBIT ; first_high_F
+;  16: bit first_high_F;
+  16  0001              PUBLIC _first_high_F
+  16  0000              _first_high_F DBIT ; first_high_F
 
-;  11: bit first_low_F;
-  11  0001              PUBLIC _first_low_F
-  11  0000              _first_low_F DBIT ; first_low_F
+;  15: bit first_low_F;
+  15  0001              PUBLIC _first_low_F
+  15  0000              _first_low_F DBIT ; first_low_F
 
-;  10: bit ScanKey_F;
-  10  0001              PUBLIC _ScanKey_F
-  10  0000              _ScanKey_F DBIT ; ScanKey_F
+;  14: bit ScanKey_F;
+  14  0001              PUBLIC _ScanKey_F
+  14  0000              _ScanKey_F DBIT ; ScanKey_F
 
-;  22: void main()
-  22  0000              STARTSEC .SECTION  COM_L 'CODE'
-  22  0000              STARTUP:
-  22  0000              STARTSEC .SECTION  COM_E 'CODE'
-  22  0000  0003        RET
-  22  0001              EXTERN V4A:BYTE
-  22  0001              EXTERN V4S:BYTE
-  22  0000              @CODE .SECTION AT 0 'CODE'
-  22  0000  2000     R  CALL STARTUP
-  22  0001  2800     R  JMP begin
-  22  0002              @DUMMY PROC
-  22  0002  2000     R  CALL _main
-  22  0003              @DUMMY ENDP
+;  26: void main()
+  26  0000              STARTSEC .SECTION  COM_L 'CODE'
+  26  0000              STARTUP:
+  26  0000              STARTSEC .SECTION  COM_E 'CODE'
+  26  0000  0003        RET
+  26  0001              EXTERN V4A:BYTE
+  26  0001              EXTERN V4S:BYTE
+  26  0000              @CODE .SECTION AT 0 'CODE'
+  26  0000  2000     R  CALL STARTUP
+  26  0001  2800     R  JMP begin
+  26  0002              @DUMMY PROC
+  26  0002  2000     R  CALL _main
+  26  0003              @DUMMY ENDP
 
 
         0 Errors
