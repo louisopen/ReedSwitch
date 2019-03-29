@@ -1,2 +1,6 @@
-# Demo Reed-switch detect both side on C-like
-Double side detector of the reed-switch on very low power comsumption, demo with C-like language of HOLTEK MCU and the system used internal RC and free running on HT66F002 8ssop.
+## Demo Reed-switch detect with C-like
+Double side detector running on very low power comsumption
+
+Demo the system used C-like language of HOLTEK MCU and used internal RC on HT66F002 8ssop
+
+Free running on HT66F002 always, power comsumption around 15uA
